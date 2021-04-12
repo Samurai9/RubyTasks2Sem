@@ -11,13 +11,16 @@ const ToDoList = (props) => {
       <H2Text isChanged={isChanged}>AAAAAAA list</H2Text>
       <ul>
         {list.map((listItem, i) => (
-          <ToDoListItem>
-            {listItem.text}
+          <>
+            <ToDoListItem id={listItem.id}>
+              {listItem.text}
+            </ToDoListItem>
             <Button onClick={() => onRemove(i)}>
               [X]
             </Button>
-          </ToDoListItem>
+          </>
         ))}
+
       </ul>
     </>
   );

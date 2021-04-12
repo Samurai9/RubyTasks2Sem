@@ -4,20 +4,17 @@ import React, { useEffect, useState } from 'react';
 import Button from '../../atoms/button';
 import ToDoForm from '../../molecules/ToDoForm'
 import ToDoList from '../../molecules/ToDoList'
+import originalListFromTodos from '../../../data/todos'
 
-let originalList = [
-  { text: 'AAA' },
-  { text: 'AAAAAA' },
-  { text: 'AAAAAAAAAA' }
-]
+let originalList = originalListFromTodos;
 const defaultChangedValue = false;
 
 
-const ToDoPage = () => {
+const ToDoPage = (props) => {
   const [list, setList] = useState(originalList);
   const [isChanged, setChanged] = useState(defaultChangedValue);
   const onAddNewItem = (value) => {
-    setList([...list, { text:value }]);
+    setList([...list, { text:value, id:list.length+1 }]);
   }
 
   useEffect(() => {
@@ -32,7 +29,7 @@ const ToDoPage = () => {
     setList(originalList);
   }
    
-  const onSaveList = () => {
+  const saveList = () => {
     originalList = list;
     setChanged(false);
   }
@@ -45,7 +42,7 @@ const ToDoPage = () => {
       <ToDoList list={list} onRemove={onRemove} isChanged={isChanged} />
       <ToDoForm onSubmit={onAddNewItem}/>
       <Button onClick={resetList}>Reset</Button>
-      <Button onClick={onSaveList}>Save</Button>
+      <Button onClick={saveList}>Save</Button>
     </>
   );
 }
