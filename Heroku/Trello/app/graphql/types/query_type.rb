@@ -12,6 +12,10 @@ module Types
       argument :id, Integer, required: true
     end
 
+    field :todo, Types::TodoType, null: true do
+      argument :id, Integer, required: true
+    end
+
     def cards
       Card.all
     end
@@ -20,11 +24,9 @@ module Types
       Card.find(id)
     end
 
-    # TODO: remove me
-    # field :test_field, String, null: false,
-    #   description: "An example field added by the generator"
-    # def test_field
-    #   "Hello World!"
-    # end
+    def todo(id:)
+      # Card.find(id).todo
+      Todo.find(id);
+    end
   end
 end

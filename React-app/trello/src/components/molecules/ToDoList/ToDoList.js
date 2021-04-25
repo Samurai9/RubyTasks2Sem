@@ -1,27 +1,46 @@
 /* eslint-disable */
 
 import ToDoListItem from '../../atoms/toDoListItem';
-import H2Text from '../../atoms/h2Text';
 import Button from '../../atoms/button'
+import styled from 'styled-components'
+import Checkbox from '../../atoms/checkbox'
+
+const StyledDiv = styled.div(() => `
+  display: flex;
+`)
+
+const StyledCard = styled.div(() => `
+  margin: 20px 10px;
+  padding: 8px 10px;
+  border: 2px solid #61dafb;
+  border-radius: 10px;
+`);
+
 
 const ToDoList = (props) => {
-  const { list, onRemove, isChanged } = props;
+  const { list, onRemove, isChanged, onChecked } = props;
+
   return (
     <>
-      <H2Text isChanged={isChanged}>AAAAAAA list</H2Text>
-      <ul>
-        {list.map((listItem, i) => (
+      <StyledDiv>
+        {list.map((listItem, checked, i) => (
           <>
-            <ToDoListItem id={listItem.id}>
-              {listItem.text}
-            </ToDoListItem>
-            <Button onClick={() => onRemove(i)}>
-              [X]
-            </Button>
+            <StyledCard>
+              <ToDoListItem checked={listItem.checked} id={listItem.id}>
+                {listItem.title}
+              </ToDoListItem>
+
+              <Checkbox onChange={(ev) => onChecked(ev, i)}/>
+                            
+              <Button onClick={() => onRemove(listItem.id)}>
+                [X]
+              </Button>
+              
+            </StyledCard>
           </>
         ))}
 
-      </ul>
+      </StyledDiv>
     </>
   );
 }

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const StyledH2Text = styled.h2(
     ({isChanged}) => `
-    color: ${isChanged ? 'yellow' : 'white'};
+    color: ${isChanged ? 'red' : 'white'};
 `)
 
 const H2Text = (props) => {

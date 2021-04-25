@@ -7,14 +7,20 @@ const StyledButton = styled.button(
     cursor: ${disabled ? 'default' : 'pointer'};
     opacity: ${disabled ? '0.5': '1'};
     font-size: 20px;
-    border-radius: 2px;
+    border-radius: 5px;
     border: none;
     padding: 4px 8px;
-    margin: 0px 10px;
+    margin: 4px 10px;
+
+    background-color: transparent;
+    opacity: 0.8;
+    color: white;
+    border: 1px solid white;
 
     &:hover {
-        border: none;
-        background-color: white;
+        opacity: 1;
+    //     border: none;
+    //     background-color: white;
     }
 `);
 

@@ -3,7 +3,6 @@
 import { useHistory, useParams } from "react-router";
 import todos from '../../../data/todos';
 import Button from '../../atoms/button';
-import { Link } from 'react-router-dom';
 
 const TaskPage = () => {
   const { id: queryId } = useParams();
@@ -17,7 +16,10 @@ const TaskPage = () => {
   return (
     <>
       <div>
-        {todo.text}
+        {todo.title}
+      </div>
+      <div>
+        {todo.description}
       </div>
       <Button onClick={goToPreviousPage}>
         Go back
